@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="전문가 명리학 기반 사주 분석 서비스">
+  <meta name="keywords" content="사주, 명리학, 운세, 분석">
+  <title>전문가 사주 분석 - 당신의 운명을 읽다</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <h1>🌟 전문가 사주 분석</h1>
+    <p>명리학 전문가 검증 - 당신의 운명을 정확하게 분석합니다</p>
+  </header>
+
+  <div class="container">
+    <!-- 네비게이션 -->
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="showPage('home')">홈</button>
+      <button class="nav-btn" onclick="showPage('analysis')">분석</button>
+      <button class="nav-btn" onclick="showPage('result')">결과</button>
+    </div>
+
+    <!-- 홈 페이지 -->
+    <div id="home" class="page active">
+      <div class="form-container">
+        <h2 style="color: #8B6F47; margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem;">
+          당신의 사주를 분석해보세요
+        </h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem; line-height: 1.8;">
+          전통 명리학을 기반으로 한 정확한 사주 분석입니다.<br>
+          생년월일을 입력하면 상세한 분석 결과를 받을 수 있습니다.
+        </p>
+        <div style="text-align: center;">
+          <button class="btn btn-primary" onclick="showPage('analysis')">분석 시작하기</button>
+        </div>
+
+        <div class="info-box" style="margin-top: 2rem;">
+          <p><strong>📌 사주란?</strong> 태어난 연, 월, 일, 시의 천간과 지지로 이루어진 8개의 글자로 인간의 운명, 성격, 적성을 분석하는 동양의 전통 학문입니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 분석 페이지 -->
+    <div id="analysis" class="page">
+      <div class="form-container">
+        <h2 style="color: #8B6F47; margin-bottom: 1.5rem; text-align: center; font-size: 1.5rem;">
+          사주 정보 입력
+        </h2>
+        <form id="analysisForm" onsubmit="handleAnalysis(event)">
+          <div class="form-group">
+            <label for="name">이름 *</label>
+            <input type="text" id="name" placeholder="예: 김철수" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="year">태어난 해 *</label>
+              <input type="number" id="year" placeholder="예: 1990" min="1900" max="2024" required>
+            </div>
+            <div class="form-group">
+              <label for="month">월 *</label>
+              <input type="number" id="month" placeholder="1-12" min="1" max="12" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="day">일 *</label>
+              <input type="number" id="day" placeholder="1-31" min="1" max="31" required>
+            </div>
+            <div class="form-group">
+              <label for="birthType">음력/양력 *</label>
+              <select id="birthType" required>
+                <option value="">선택하세요</option>
+                <option value="solar">양력</option>
+                <option value="lunar">음력</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="birthTime">시간 (선택)</label>
+              <input type="text" id="birthTime" placeholder="예: 14:30">
+            </div>
+            <div class="form-group">
+              <label for="ampm">오전/오후</label>
+              <select id="ampm">
+                <option value="AM">오전</option>
+                <option value="PM">오후</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary">분석하기</button>
+          </div>
+        </form>
+
+        <div class="info-box" style="margin-top: 2rem;">
+          <p><strong>💡 팁:</strong> 정확한 분석을 위해 가능하면 정확한 출생 시간을 입력해주세요. 시간을 모를 경우 "정오(12:00)"로 입력하면 됩니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 결과 페이지 -->
+    <div id="result" class="page">
+      <div id="resultContent"></div>
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <footer>
+    <p>&copy; 2024 전문가 사주 분석 서비스</p>
+    <p>이 서비스는 전통 명리학을 기반으로 하며 오락 및 참고용입니다.</p>
+  </footer>
+
+  <!-- 스크립트 로드 -->
+  <script src="saju-engine.js"></script>
+  <script src="analysis-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
